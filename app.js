@@ -10,6 +10,7 @@ var usersRouter = require("./routes/users");
 
 const helloRouter = require("./routes/hello");
 const reportRouter = require("./routes/report");
+const startWebSocketServers = require("./websocket/index");
 
 var app = express();
 
@@ -28,7 +29,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(reportRouter);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/api/hello", helloRouter);
+app.use("/hello", helloRouter);
+startWebSocketServers();
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
