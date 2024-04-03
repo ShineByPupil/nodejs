@@ -1,5 +1,4 @@
-const express = require("express");
-const router = express.Router();
+const router = require("../router");
 const connection = require("../db");
 const table_name = "personal_info";
 
@@ -88,5 +87,3 @@ router.post("/user/detail", (req, res) => {
     }
   });
 });
-
-module.exports = router;

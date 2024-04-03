@@ -1,6 +1,7 @@
 const router = require("../router");
 
-router.get("/", (req, res) => {
+router.post("/login", (req, res) => {
+  const { username, password } = req.body;
   // res.send('Hello, World!');
   res.json({ message: "Hello, World!" });
 });
