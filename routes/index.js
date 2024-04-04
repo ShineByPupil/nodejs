@@ -3,6 +3,7 @@ require("./index");
 require("./users");
 require("./hello");
 require("./report");
+require("./getMenu");
 
 const router = require("../router");
 
