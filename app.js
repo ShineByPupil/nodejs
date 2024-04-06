@@ -7,10 +7,12 @@ var logger = require("morgan");
 
 const startWebSocketServers = require("./websocket/index");
 const routes = require("./routes/index");
+const { verifyToken } = require("./jwt");
 
 var app = express();
 
 app.use(cors()); // 启用 CORS 中间件
+app.use(verifyToken); // 启用 JWT 中间件
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

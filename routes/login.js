@@ -1,7 +1,7 @@
 const router = require("../router");
 const connection = require("../db");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const { signToken } = require("../jwt");
 
 // 加密
 function hashPassword(password) {
@@ -46,12 +46,13 @@ router.post("/login", (req, res) => {
       }
 
       // 生成访问令牌
-      const accessToken = jwt.sign({ username: user.username }, "secret_key", {
-        expiresIn: "1h",
-      });
+      const accessToken = signToken({ username: user.username });
 
       // 返回访问令牌
-      res.json({ accessToken });
+      res
+        .status(200)
+        .setHeader("Authorization", `Bearer ${accessToken}`)
+        .json({ message: "登录成功" });
 
       // todo
     });
