@@ -23,7 +23,7 @@ function verifyToken(req, res, next) {
   }
 
   // 从请求头中获取 token
-  const token = req.headers.authorization;
+  const token = req.headers.authorization.split(" ")[1];
 
   if (!token) {
     return res.status(401).json({ message: "Missing token" });
