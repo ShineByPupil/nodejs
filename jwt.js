@@ -18,6 +18,10 @@ function signToken(payload) {
  * @return {any} 验证后的令牌
  */
 function verifyToken(req, res, next) {
+  if (req.url === "/login") {
+    return next();
+  }
+
   // 从请求头中获取 token
   const token = req.headers.authorization;
 
