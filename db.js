@@ -1,11 +1,16 @@
 const mysql = require("mysql2");
+const fs = require("fs");
 
-const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "mysql123",
-  database: "mysql",
-});
+let config = null;
+// 同步读取配置文件
+try {
+  const data = fs.readFileSync("db_config.json", "utf8");
+  config = JSON.parse(data);
+} catch (error) {
+  console.error("Error reading or parsing config file:", error);
+}
+
+const connection = mysql.createConnection(config);
 
 connection.connect((error) => {
   if (error) {
