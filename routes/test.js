@@ -1,3 +1,5 @@
-const os = require('node:http');
+const router = require("../router");
 
-console.log(os)
+router.get("/test", (req, res) => {
+  res.json({ message: "Hello, World!" });
+});

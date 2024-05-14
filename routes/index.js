@@ -1,3 +1,4 @@
+require("./test");
 require("./login");
 require("./index");
 require("./users");
